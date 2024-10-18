@@ -16,12 +16,12 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t saulguadarrama495/incident-app:${{ github.sha }} .
+        run: docker build -t saulguadarrama495/todo-list:${{ github.sha }} .
 
       - name: Tag Latest
-        run: docker tag saulguadarrama495/incident-app:${{ github.sha }} saulguadarrama495/incident-app:latest
+        run: docker tag saulguadarrama495/todo-list:${{ github.sha }} saulguadarrama495/todo-list:latest
 
       - name: Push Docker Image
-        run: docker push saulguadarrama495/incident-app:${{ github.sha }}
+        run: docker push saulguadarrama495/todo-list:${{ github.sha }}
       - name: Push Latest Tag
-        run: docker push saulguadarrama495/incident-app:latest
+        run: docker push saulguadarrama495/todo-list:latest
