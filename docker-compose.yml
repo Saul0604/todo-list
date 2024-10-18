@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-todoList
+
+    ports:
+      - "3306:3306"
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+
+    volumes:
+      - todoList:/var/lib/mysql
+
+  todoList:
+    image: todo-list:v1.0
+    container_name: todo-list
+    ports:
+      - "3307:3000"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 12345
+      MYSQL_HOST: mysql
+      MYSQL_DB: todoList
+    depends_on:
+      - mysql
+
+
+volumes:
+  todoList:
